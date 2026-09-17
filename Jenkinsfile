@@ -56,7 +56,18 @@ pipeline {
             }
         }
 
-                stage('Terraform Apply') {
+                stage('Terraform Plan') {
+            steps {
+                dir('terraform/infrastructure') {
+                    sh 'terraform plan -out=tfplan'
+                    sh 'terraform show -no-color tfplan > tfplan.txt'
+                }
+                archiveArtifacts artifacts: 'terraform/infrastructure/tfplan.txt',
+                                 fingerprint: true
+            }
+        }
+
+        stage('Terraform Apply') {
             steps {
                 script {
                     timeout(time: 15, unit: 'MINUTES') {
@@ -66,17 +77,6 @@ pipeline {
                 dir('terraform/infrastructure') {
                     sh 'terraform apply -auto-approve tfplan'
                 }
-            }
-        }
-
-        stage('Terraform Plan') {
-            steps {
-                dir('terraform/infrastructure') {
-                    sh 'terraform plan -out=tfplan'
-                    sh 'terraform show -no-color tfplan > tfplan.txt'
-                }
-                archiveArtifacts artifacts: 'terraform/infrastructure/tfplan.txt',
-                                 fingerprint: true
             }
         }
     }
