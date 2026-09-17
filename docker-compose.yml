@@ -1,0 +1,25 @@
+services:
+  planetary_app_hackathon-mvc:
+    image: guledjama97/planetary-app-hackathon-mvc-cloud:latest
+    build:
+      context: ./server
+    ports:
+      - "80:80"
+    restart: always
+    depends_on:
+      - planetary_app_hackathon-db
+    networks:
+      - planetary_app_hackathon-network
+
+  planetary_app_hackathon-db:
+    image: guledjama97/planetary-app-hackathon-db-cloud:latest
+    build:
+      context: ./db
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - planetary_app_hackathon-network
+
+networks:
+  planetary_app_hackathon-network:
