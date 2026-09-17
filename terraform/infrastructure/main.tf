@@ -46,6 +46,7 @@ resource "azurerm_linux_virtual_machine" "http_server" {
     offer     = "ubuntu-24_04-lts"
     sku       = "server"
     version   = data.azurerm_platform_image.ubuntu_latest.version
-    custom_data = base64encode(file("${path.module}/cloud-init.yaml"))
   }
+
+  custom_data = base64encode(file("${path.module}/cloud-init.yaml"))
 }
