@@ -9,17 +9,17 @@ write_files:
     permissions: '0644'
     content: |
       services:
-        planets-mvc:
+        planetary_app_hackathon_mvc:
           image: guledjama97/planetary-app-hackathon-mvc-cloud:latest
           ports:
             - "80:80"
           restart: always
           depends_on:
-            - planets-db
+            - planetary_app_hackathon_db
           networks:
             - planetary_app_hackathon_network
 
-        planets-db:
+        planetary_app_hackathon_db:
           image: guledjama97/planetary-app-hackathon-db-cloud:latest
           restart: always
           networks:
