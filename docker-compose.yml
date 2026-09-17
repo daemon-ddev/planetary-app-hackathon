@@ -1,6 +1,6 @@
 services:
   planetary_app_hackathon-mvc:
-    image: guledjama97/planetary-app-hackathon-mvc-cloud:latest
+    image: guledjama97/planetary-app-hackathon-mvc:latest
     build:
       context: ./server
     ports:
@@ -12,7 +12,7 @@ services:
       - planetary_app_hackathon-network
 
   planetary_app_hackathon-db:
-    image: guledjama97/planetary-app-hackathon-db-cloud:latest
+    image: guledjama97/planetary-app-hackathon-db:latest
     build:
       context: ./db
     ports:
