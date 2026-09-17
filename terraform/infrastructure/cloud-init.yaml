@@ -10,7 +10,7 @@ write_files:
     content: |
       services:
         planets-mvc:
-          image: guledjama97/planets-mvc:latest
+          image: guledjama97/planetary-app-hackathon-mvc-cloud:latest
           ports:
             - "80:80"
           restart: always
@@ -20,7 +20,7 @@ write_files:
             - planetary_app_hackathon_network
 
         planets-db:
-          image: guledjama97/planets-db:latest
+          image: guledjama97/planetary-app-hackathon-db-cloud:latest
           restart: always
           networks:
             - planetary_app_hackathon_network
