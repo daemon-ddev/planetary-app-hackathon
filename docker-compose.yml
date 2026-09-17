@@ -1,5 +1,5 @@
 services:
-  planetary_app_hackathon-mvc:
+  planetary_app_hackathon_mvc:
     image: guledjama97/planetary-app-hackathon-mvc:latest
     build:
       context: ./server
@@ -7,11 +7,11 @@ services:
       - "80:80"
     restart: always
     depends_on:
-      - planetary_app_hackathon-db
+      - planetary_app_hackathon_db
     networks:
-      - planetary_app_hackathon-network
+      - planetary_app_hackathon_network
 
-  planetary_app_hackathon-db:
+  planetary_app_hackathon_db:
     image: guledjama97/planetary-app-hackathon-db:latest
     build:
       context: ./db
@@ -19,7 +19,7 @@ services:
       - "5432:5432"
     restart: always
     networks:
-      - planetary_app_hackathon-network
+      - planetary_app_hackathon_network
 
 networks:
-  planetary_app_hackathon-network:
+  planetary_app_hackathon_network:
